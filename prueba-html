@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Diagnóstico de Imágenes - Villa Baviera</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #292922, #3E3B31);
+            color: #EAEAC4;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #3E3B31;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid #C9B050;
+        }
+
+        h1 {
+            color: #C9B050;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .test-section {
+            background: #292922;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid #C9B050;
+        }
+
+        .test-title {
+            color: #C9B050;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #C9B050;
+            padding-bottom: 0.5rem;
+        }
+
+        .image-test {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.7rem;
+            background: #3E3B31;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(201, 176, 80, 0.3);
+        }
+
+        .image-name {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .status-loading {
+            background: rgba(241, 196, 15, 0.2);
+            color: #f1c40f;
+            border: 1px solid #f1c40f;
+        }
+
+        .status-success {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .status-error {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .preview-img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #C9B050;
+        }
+
+        .preview-placeholder {
+            width: 60px;
+            height: 40px;
+            background: #292922;
+            border-radius: 5px;
+            border: 1px solid #e74c3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e74c3c;
+            font-size: 12px;
+        }
+
+        .summary {
+            background: #C9B050;
+            color: #292922;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .summary h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(41, 41, 34, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .btn-test {
+            background: #C9B050;
+            color: #292922;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .btn-test:hover {
+            background: #B8A045;
+            transform: translateY(-2px);
+        }
+
+        .error-details {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid #e74c3c;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .solution-box {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid #2ecc71;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .solution-title {
+            color: #2ecc71;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .filename-variants {
+            background: #292922;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #C9B050;
+        }
+
+        @media (max-width: 768px) {
+            .image-test {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Diagnóstico de Imágenes Villa Baviera</h1>
+        
+        <!-- Test de imágenes que FUNCIONAN -->
+        <div class="test-section">
+            <div class="test-title">✅ IMÁGENES QUE FUNCIONAN</div>
+            <div id="working-images"></div>
+        </div>
+
+        <!-- Test de imágenes PROBLEMÁTICAS -->
+        <div class="test-section">
+            <div class="test-title">❌ IMÁGENES PROBLEMÁTICAS (Inicio_*)</div>
+            <div id="problematic-images"></div>
+        </div>
+
+        <!-- Test de otras imágenes del sistema -->
+        <div class="test-section">
+            <div class="test-title">🔍 OTRAS IMÁGENES DEL SISTEMA</div>
+            <div id="other-images"></div>
+        </div>
+
+        <button class="btn-test" onclick="runDiagnostic()">🚀 EJECUTAR DIAGNÓSTICO</button>
+
+        <div class="summary" id="summary" style="display: none;">
+            <h3>📊 RESUMEN DEL DIAGNÓSTICO</h3>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-tests">0</span>
+                    <span class="stat-label">Total Probadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="successful-tests">0</span>
+                    <span class="stat-label">Exitosas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="failed-tests">0</span>
+                    <span class="stat-label">Fallidas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="success-rate">0%</span>
+                    <span class="stat-label">Tasa de Éxito</span>
+                </div>
+            </div>
+            <div id="diagnosis-result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Lista de imágenes a probar
+        const imageTests = {
+            working: [
+                'logo1.jpeg',
+                'Fondo_Hero_Principal.jpg',
+                'Fondo_About_VillaBaviera.jpg'
+            ],
+            problematic: [
+                'Inicio_Programa_Derechos_Salud.jpg',
+                'Inicio_Museo_Memoria.jpg',
+                'Inicio_Nueva_Aldea.jpg',
+                'Inicio_Eventos_Recaudacion.jpg',
+                'Inicio_Campanas_Educativas.jpg',
+                'Inicio_Siguenos_Facebook.jpg',
+                'Inicio_Siguenos_Instagram.jpg',
+                'Inicio_Siguenos_Twitter.jpg',
+                'Inicio_Siguenos_LinkedIn.jpg',
+                'Inicio_Siguenos_YouTube.jpg',
+                'Inicio_Evento_Taller_Memoria.jpg',
+                'Inicio_Evento_Operativo_Salud.jpg',
+                'Inicio_Evento_Feria_Benefica.jpg',
+                'Inicio_Evento_Podcast_Vivo.jpg'
+            ],
+            others: [
+                'Historia_Museo_Interior.jpg',
+                'QuienesSomos_Nuestra_Historia.jpg',
+                'Proyectos_Programa_Derechos_Salud.jpg',
+                'Transparencia_Dashboard_Financiero.jpg'
+            ]
+        };
+
+        let testResults = {
+            total: 0,
+            successful: 0,
+            failed: 0,
+            results: []
+        };
+
+        function createImageTest(filename, category) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'image-test';
+            testDiv.innerHTML = `
+                <div class="image-name">${filename}</div>
+                <div class="status status-loading" id="status-${filename.replace(/[^a-zA-Z0-9]/g, '')}">Probando...</div>
+                <div id="preview-${filename.replace(/[^a-zA-Z0-9]/g, '')}" class="preview-placeholder">⏳</div>
+            `;
+            return testDiv;
+        }
+
+        function setupImageTests() {
+            // Configurar imágenes que funcionan
+            const workingContainer = document.getElementById('working-images');
+            imageTests.working.forEach(filename => {
+                workingContainer.appendChild(createImageTest(filename, 'working'));
+            });
+
+            // Configurar imágenes problemáticas
+            const problematicContainer = document.getElementById('problematic-images');
+            imageTests.problematic.forEach(filename => {
+                problematicContainer.appendChild(createImageTest(filename, 'problematic'));
+            });
+
+            // Configurar otras imágenes
+            const othersContainer = document.getElementById('other-images');
+            imageTests.others.forEach(filename => {
+                othersContainer.appendChild(createImageTest(filename, 'others'));
+            });
+        }
+
+        function testImage(filename) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                const cleanFilename = filename.replace(/[^a-zA-Z0-9]/g, '');
+                const statusElement = document.getElementById(`status-${cleanFilename}`);
+                const previewElement = document.getElementById(`preview-${cleanFilename}`);
+                
+                const timeout = setTimeout(() => {
+                    resolve({
+                        filename: filename,
+                        success: false,
+                        error: 'Timeout (más de 5 segundos)',
+                        loadTime: 5000
+                    });
+                }, 5000);
+
+                const startTime = Date.now();
+
+                img.onload = function() {
+                    clearTimeout(timeout);
+                    const loadTime = Date.now() - startTime;
+                    
+                    statusElement.textContent = `✅ OK (${loadTime}ms)`;
+                    statusElement.className = 'status status-success';
+                    
+                    previewElement.innerHTML = `<img src="images/${filename}" class="preview-img" alt="${filename}">`;
+                    
+                    resolve({
+                        filename: filename,
+                        success: true,
+                        loadTime: loadTime
+                    });
+                };
+
+                img.onerror = function() {
+                    clearTimeout(timeout);
+                    const loadTime = Date.now() - startTime;
+                    
+                    statusElement.textContent = '❌ 404 Error';
+                    statusElement.className = 'status status-error';
+                    
+                    previewElement.innerHTML = '❌';
+                    
+                    resolve({
+                        filename: filename,
+                        success: false,
+                        error: '404 Not Found',
+                        loadTime: loadTime
+                    });
+                };
+
+                img.src = `images/${filename}`;
+            });
+        }
+
+        async function runDiagnostic() {
+            const allImages = [...imageTests.working, ...imageTests.problematic, ...imageTests.others];
+            testResults = { total: allImages.length, successful: 0, failed: 0, results: [] };
+
+            console.log('🚀 Iniciando diagnóstico de', allImages.length, 'imágenes...');
+
+            // Probar todas las imágenes
+            for (const filename of allImages) {
+                try {
+                    const result = await testImage(filename);
+                    testResults.results.push(result);
+                    
+                    if (result.success) {
+                        testResults.successful++;
+                    } else {
+                        testResults.failed++;
+                    }
+                    
+                    console.log(`${result.success ? '✅' : '❌'} ${filename}: ${result.success ? 'OK' : result.error}`);
+                } catch (error) {
+                    console.error('Error probando', filename, ':', error);
+                    testResults.failed++;
+                }
+            }
+
+            showSummary();
+        }
+
+        function showSummary() {
+            const summaryDiv = document.getElementById('summary');
+            summaryDiv.style.display = 'block';
+
+            // Actualizar estadísticas
+            document.getElementById('total-tests').textContent = testResults.total;
+            document.getElementById('successful-tests').textContent = testResults.successful;
+            document.getElementById('failed-tests').textContent = testResults.failed;
+            
+            const successRate = Math.round((testResults.successful / testResults.total) * 100);
+            document.getElementById('success-rate').textContent = successRate + '%';
+
+            // Generar diagnóstico
+            const diagnosisDiv = document.getElementById('diagnosis-result');
+            
+            // Analizar patrones de fallos
+            const failedImages = testResults.results.filter(r => !r.success);
+            const inicioFailed = failedImages.filter(r => r.filename.startsWith('Inicio_'));
+            const othersFailed = failedImages.filter(r => !r.filename.startsWith('Inicio_'));
+
+            let diagnosis = '';
+            
+            if (inicioFailed.length > 0) {
+                diagnosis += `
+                    <div class="error-details">
+                        <h4>🚨 PROBLEMA IDENTIFICADO</h4>
+                        <p><strong>${inicioFailed.length} imágenes "Inicio_*" fallan</strong> con error 404.</p>
+                        <p>Esto confirma que hay un problema específico con archivos que empiezan por "Inicio_".</p>
+                    </div>
+                `;
+            }
+
+            if (testResults.successful > 0) {
+                const workingImages = testResults.results.filter(r => r.success);
+                diagnosis += `
+                    <div style="background: rgba(46, 204, 113, 0.1); border: 1px solid #2ecc71; border-radius: 10px; padding: 1rem; margin-top: 1rem;">
+                        <h4>✅ IMÁGENES QUE FUNCIONAN:</h4>
+                        <p>${workingImages.map(r => r.filename).join(', ')}</p>
+                    </div>
+                `;
+            }
+
+            // Proporcionar soluciones
+            if (inicioFailed.length > 0) {
+                diagnosis += `
+                    <div class="solution-box">
+                        <div class="solution-title">💡 SOLUCIONES RECOMENDADAS:</div>
+                        
+                        <h4>1. VERIFICAR CASE SENSITIVITY</h4>
+                        <p>Los servidores Linux distinguen entre mayúsculas y minúsculas. Verifica que los nombres de archivo sean exactamente:</p>
+                        <div class="filename-variants">
+                            ${inicioFailed.map(r => `✅ ${r.filename}`).join('<br>')}
+                        </div>
+                        
+                        <h4>2. RE-SUBIR ARCHIVOS</h4>
+                        <p>Sube nuevamente SOLO los archivos que empiezan por "Inicio_" al servidor.</p>
+                        
+                        <h4>3. VERIFICAR PERMISOS</h4>
+                        <p>Asegúrate de que los archivos tengan permisos 644 (rw-r--r--) en el servidor.</p>
+                        
+                        <h4>4. ALTERNATIVA TEMPORAL</h4>
+                        <p>Renombra los archivos problemáticos para seguir el patrón que funciona:</p>
+                        <div class="filename-variants">
+                            Cambiar: Inicio_Programa_Derechos_Salud.jpg<br>
+                            Por: Fondo_Programa_Derechos_Salud.jpg
+                        </div>
+                    </div>
+                `;
+            }
+
+            diagnosisDiv.innerHTML = diagnosis;
+        }
+
+        // Inicializar la herramienta
+        document.addEventListener('DOMContentLoaded', function() {
+            setupImageTests();
+            console.log('🔍 Herramienta de diagnóstico lista. Haz clic en "EJECUTAR DIAGNÓSTICO" para empezar.');
+        });
+    </script>
+</body>
+</html>

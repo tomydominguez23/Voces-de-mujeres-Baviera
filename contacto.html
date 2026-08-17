@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Voces de Mujeres Unidas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo1.jpeg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #292922;
+            --secondary-medium: #3E3B31;
+            --accent-gold: #C9B050;
+            --neutral-light: #EAEAC4;
+            --neutral-dark: #1F1F14;
+            --text-primary: #EAEAC4;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-kerning: normal;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--primary-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(41, 41, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--secondary-medium);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 65px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            background: var(--secondary-medium);
+            color: var(--neutral-light);
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            width: 44px;
+            height: 36px;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover { background: var(--accent-gold); color: var(--neutral-dark); }
+
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-link { color: var(--neutral-light); text-decoration: none; transition: color 0.3s ease; }
+        .nav-link:hover { color: var(--accent-gold); }
+
+        .language-dropdown {
+            background: var(--secondary-medium);
+            color: var(--neutral-light);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            min-width: 80px;
+        }
+        .language-dropdown:hover { background: var(--accent-gold); color: var(--neutral-dark); }
+
+        .btn-donate {
+            background: var(--accent-gold);
+            color: var(--neutral-dark);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-donate:hover { background: #B8A045; color: var(--neutral-dark); transform: translateY(-2px); }
+
+        /* ===== MAIN ===== */
+        .main-content { margin-top: 100px; padding: 3rem 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .page-subtitle { text-align: center; font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; }
+
+        .contact-card {
+            background: var(--secondary-medium);
+            border: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            background-image: linear-gradient(rgba(41,41,34,0.78), rgba(41,41,34,0.78)), url('images/Ni%C3%B1o%20Pelota.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .contact-card h2 { font-family: var(--font-heading); color: var(--accent-gold); margin-bottom: 1rem; font-size: 1.6rem; }
+
+        .account-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .account-list li { margin-bottom: 0.6rem; font-size: 1.05rem; }
+        .account-list a { color: var(--neutral-light); text-decoration: none; }
+        .account-list a:hover { color: var(--accent-gold); text-decoration: underline; }
+
+        .thanks { margin-top: 0.5rem; font-weight: 700; color: var(--neutral-light); }
+
+        /* ===== CONTACT BAR ===== */
+        .contact-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(41, 41, 34, 0.98);
+            border-top: 1px solid var(--accent-gold);
+            padding: 0.6rem 1rem;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .contact-bar a { color: var(--neutral-light); text-decoration: none; }
+        .contact-bar a:hover { color: var(--accent-gold); text-decoration: underline; }
+        @media (max-width: 480px) { .contact-bar { flex-direction: column; gap: 0.25rem; padding: 0.5rem 0.75rem; } }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-container { padding: 0 .75rem; gap: .5rem; justify-content: space-between; }
+            .logo { margin-left: 6px; height: 58px; }
+            .hamburger { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 32px; font-size: 18px; }
+            .nav-menu { display: none; position: absolute; top: 64px; left: 0; width: 100%; background: rgba(41,41,34,.98); border-bottom: 1px solid var(--secondary-medium); padding: .5rem .75rem; flex-direction: column; gap: .25rem; z-index: 999; }
+            .nav-menu.open { display: flex; }
+            .header-container > nav { order: 1; }
+            .header-container > .logo { order: 2; }
+            .header-container > .header-actions { order: 3; margin-left: auto; }
+            .page-title { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <img src="images/logo1.jpeg" alt="Voces de Mujeres Unidas" class="logo" onclick="window.location.href='index.html'">
+            
+            <nav>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">☰</button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link" id="nav-inicio">Inicio</a></li>
+                    <li><a href="nuestra-historia.html" class="nav-link" id="nav-historia">Historia</a></li>
+                    <li><a href="quienes_somos.html" class="nav-link" id="nav-quienes">Quiénes Somos</a></li>
+                    <li><a href="proyectos.html" class="nav-link" id="nav-proyectos">Proyectos</a></li>
+                    <li style="display: none;"><a href="transparencia.html" class="nav-link" id="nav-transparencia">Transparencia</a></li>
+                    <li><a href="contacto.html" class="nav-link" id="nav-contacto" style="color: var(--accent-gold);">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="languageSelect" class="language-dropdown">
+                        <option value="es" selected>🇪🇸 ES</option>
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="de">🇩🇪 DE</option>
+                    </select>
+                </div>
+                <a href="#donar" class="btn-donate" id="btn-donar-header" onclick="event.preventDefault(); window.open('https://www.paypal.com/donate/?hosted_button_id=QHFGQRJQQG8YU','_blank','noopener');">Donar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title" id="page-title">Gracias por tu apoyo</h1>
+            <p class="page-subtitle" id="page-subtitle">Puedes realizar aportes a la siguiente cuenta</p>
+
+            <div class="contact-card">
+                <h2 id="account-title">Contacto de Nuestra Cuenta como Agrupación</h2>
+                <ul class="account-list">
+                    <li><strong>Chequera electrónica</strong> — Banco Estado</li>
+                    <li><strong>N°</strong> 44 77 051 8251</li>
+                    <li><strong>RUT</strong>: 65.212.214-0</li>
+                    <li><strong>Email</strong>: <a href="mailto:agrupmadresc@gmail.com">agrupmadresc@gmail.com</a></li>
+                </ul>
+                <p class="thanks" id="thanks-text">¡Gracias por tu aporte!</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="contact-bar">
+        <a href="mailto:agrupmadresc@gmail.com">📧 agrupmadresc@gmail.com</a>
+        <a href="tel:+56990153201">📞 +56 9 9015 3201</a>
+    </div>
+
+    <script>
+        // Menú hamburguesa
+        (function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (hamburgerBtn && navMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                    hamburgerBtn.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
+                });
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('open');
+                        hamburgerBtn.textContent = '☰';
+                    });
+                });
+            }
+        })();
+
+        // Traducciones mínimas (nav + textos de la página)
+        (function() {
+            const translations = {
+                es: {
+                    inicio: 'Inicio', historia: 'Historia', quienesSomos: 'Quiénes Somos', proyectos: 'Proyectos', transparencia: 'Transparencia', contacto: 'Contacto', donar: 'Donar',
+                    pageTitle: 'Gracias por tu apoyo', pageSubtitle: 'Puedes realizar aportes a la siguiente cuenta', accountTitle: 'Contacto de Nuestra Cuenta como Agrupación', thanksText: '¡Gracias por tu aporte!'
+                },
+                en: {
+                    inicio: 'Home', historia: 'History', quienesSomos: 'About Us', proyectos: 'Projects', transparencia: 'Transparency', contacto: 'Contact', donar: 'Donate',
+                    pageTitle: 'Thank you for your support', pageSubtitle: 'You can make contributions to this account', accountTitle: 'Our Association Account Contact', thanksText: 'Thank you for your contribution!'
+                },
+                de: {
+                    inicio: 'Startseite', historia: 'Geschichte', quienesSomos: 'Wer wir sind', proyectos: 'Projekte', transparencia: 'Transparenz', contacto: 'Kontakt', donar: 'Spenden',
+                    pageTitle: 'Danke für Ihre Unterstützung', pageSubtitle: 'Sie können auf folgendes Konto spenden', accountTitle: 'Kontaktdaten unseres Vereinskontos', thanksText: 'Vielen Dank für Ihre Spende!'
+                }
+            };
+
+            function changeLanguage(lang) {
+                const t = translations[lang] || translations.es;
+                const map = {
+                    'nav-inicio': 'inicio', 'nav-historia': 'historia', 'nav-quienes': 'quienesSomos', 'nav-proyectos': 'proyectos', 'nav-transparencia': 'transparencia', 'nav-contacto': 'contacto', 'btn-donar-header': 'donar',
+                    'page-title': 'pageTitle', 'page-subtitle': 'pageSubtitle', 'account-title': 'accountTitle', 'thanks-text': 'thanksText'
+                };
+                Object.keys(map).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    const key = map[id];
+                    el.textContent = t[key];
+                });
+                try { localStorage.setItem('selectedLanguage', lang); document.documentElement.lang = lang; } catch (e) {}
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const languageSelect = document.getElementById('languageSelect');
+                if (!languageSelect) return;
+                const saved = localStorage.getItem('selectedLanguage') || 'es';
+                languageSelect.value = saved;
+                if (saved !== 'es') changeLanguage(saved);
+                languageSelect.addEventListener('change', function(e) { changeLanguage(e.target.value); });
+                window.addEventListener('storage', function(e) { if (e.key === 'selectedLanguage') { const nl = e.newValue || 'es'; if (document.documentElement.lang !== nl) { languageSelect.value = nl; changeLanguage(nl); } } });
+            });
+        })();
+    </script>
+</body>
+</html>
+

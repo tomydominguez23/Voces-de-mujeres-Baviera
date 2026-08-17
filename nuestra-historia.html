@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - Voces de Mujeres Unidas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo1.jpeg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CONFIGURACIÓN DE COLORES DE LA MARCA ===== */
+        :root {
+            --primary-dark: #292922;
+            --secondary-medium: #3E3B31;
+            --accent-gold: #C9B050;
+            --neutral-light: #EAEAC4;
+            --neutral-dark: #1F1F14;
+            --text-primary: #EAEAC4;
+            --text-dark: #1F1F14;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* ===== RESET Y BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-kerning: normal;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--primary-dark);
+            margin: 0;
+            padding: 0;
+            font-feature-settings: "liga" 1, "calt" 1;
+            font-variant-ligatures: common-ligatures contextual;
+        }
+
+        /* ===== HEADER FIJO ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(41, 41, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--secondary-medium);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 65px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== MENÚ HAMBURGUESA ===== */
+        .hamburger {
+            display: none;
+            background: var(--secondary-medium);
+            color: var(--neutral-light);
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            width: 44px;
+            height: 36px;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: var(--accent-gold);
+            color: var(--neutral-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--neutral-light);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ===== SELECTOR DE IDIOMAS ===== */
+        .language-selector {
+            position: relative;
+        }
+
+        .language-dropdown {
+            background: var(--secondary-medium);
+            color: var(--neutral-light);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            min-width: 80px;
+        }
+
+        .language-dropdown:hover {
+            background: var(--accent-gold);
+            color: var(--neutral-dark);
+        }
+
+        .language-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(201, 176, 80, 0.3);
+        }
+
+        .language-dropdown option {
+            background: var(--secondary-medium);
+            color: var(--neutral-light);
+            padding: 0.5rem;
+        }
+
+        .btn-donate {
+            background: var(--accent-gold);
+            color: var(--neutral-dark);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-donate:hover {
+            background: #B8A045;
+            color: var(--neutral-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .main-content {
+            margin-top: 100px;
+            padding: 3rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== TESTIMONIO DESTACADO - NUEVO ===== */
+        .testimony-section {
+            background: linear-gradient(135deg, rgba(201, 176, 80, 0.1), rgba(62, 59, 49, 0.3));
+            border: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 3rem 0 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimony-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            font-family: var(--font-heading);
+            color: var(--accent-gold);
+            opacity: 0.2;
+        }
+
+        .testimony-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimony-text {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimony-author {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .testimony-source {
+            font-size: 0.9rem;
+            color: var(--neutral-light);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== SECCIONES DE HISTORIA - MODIFICADO SIN CUADRADOS ===== */
+        .history-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .section-content {
+            /* Removidos todos los estilos de fondo, borde y padding */
+            margin-bottom: 1rem;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: var(--text-primary);
+        }
+
+        .section-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== QUOTE DESTACADA ===== */
+        .quote-section {
+            background: var(--neutral-dark);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ===== SECCIÓN PRESENTE ===== */
+        .present-section {
+            background: var(--secondary-medium);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--accent-gold);
+            margin: 4rem 0;
+        }
+
+        .present-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .present-intro {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .present-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .present-item {
+            background: rgba(201, 176, 80, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .present-item-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .present-item-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .present-btn {
+            background: var(--accent-gold);
+            color: var(--neutral-dark);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .present-btn:hover {
+            background: #B8A045;
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--neutral-dark);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--secondary-medium);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--neutral-light);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--secondary-medium);
+            opacity: 0.7;
+            color: var(--neutral-light);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 .75rem;
+                gap: .5rem;
+                justify-content: space-between;
+            }
+
+            .logo {
+                margin-left: 6px;
+                height: 58px;
+            }
+
+            .hamburger {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 38px;
+                height: 32px;
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: rgba(41,41,34,.98);
+                border-bottom: 1px solid var(--secondary-medium);
+                padding: .5rem .75rem;
+                flex-direction: column;
+                gap: .25rem;
+                z-index: 999;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .header-container > nav {
+                order: 1;
+            }
+
+            .header-container > .logo {
+                order: 2;
+            }
+
+            .header-container > .header-actions {
+                order: 3;
+                margin-left: auto;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.5rem;
+            }
+
+            .testimony-text {
+                font-size: 1.2rem;
+            }
+
+            .present-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .quote-text {
+                font-size: 1.3rem;
+            }
+
+            .testimony-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* ===== CONTACT BAR ===== */
+        .contact-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(41, 41, 34, 0.98);
+            border-top: 1px solid var(--accent-gold);
+            padding: 0.6rem 1rem;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-bar a {
+            color: var(--neutral-light);
+            text-decoration: none;
+        }
+
+        .contact-bar a:hover {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .contact-bar {
+                flex-direction: column;
+                gap: 0.25rem;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-container">
+            <img src="images/logo1.jpeg" alt="Voces de Mujeres Unidas" class="logo" onclick="window.location.href='index.html'">
+            
+            <nav>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">☰</button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link" id="nav-inicio">Inicio</a></li>
+                    <li><a href="nuestra-historia.html" class="nav-link" id="nav-historia" style="color: var(--accent-gold);">Historia</a></li>
+                    <li><a href="quienes_somos.html" class="nav-link" id="nav-quienes">Quiénes Somos</a></li>
+                    <li><a href="proyectos.html" class="nav-link" id="nav-proyectos">Proyectos</a></li>
+                    <li style="display: none;"><a href="transparencia.html" class="nav-link" id="nav-transparencia">Transparencia</a></li>
+                    <li><a href="contacto.html" class="nav-link" id="nav-contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="languageSelect" class="language-dropdown">
+                        <option value="es" selected>🇪🇸 ES</option>
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="de">🇩🇪 DE</option>
+                    </select>
+                </div>
+                <a href="#donar" class="btn-donate" id="btn-donar-header" onclick="event.preventDefault(); window.open('https://www.paypal.com/donate/?hosted_button_id=QHFGQRJQQG8YU','_blank','noopener');">Donar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title" id="page-title">Nuestra Historia</h1>
+            <p class="page-subtitle" id="page-subtitle">Villa Baviera: del dolor a la esperanza, el territorio donde se escribe la historia de cómo transformar la memoria en herramienta de cambio</p>
+            
+            <!-- TESTIMONIO DE EVA LAUBE - NUEVO -->
+            <div class="testimony-section fade-in-up">
+                <div class="testimony-content">
+                    <p class="testimony-text" id="testimony-text">
+                        "Fui golpeada, fui encerrada por semanas, me obligaron a trabajar 16 horas al día sin descanso y sin pago, no me dejaron hablar con mis padres y tampoco con mis hermanos... Mi infancia y juventud fueron robadas, pero hoy estoy aquí, de pie, contando mi historia para que nunca más vuelva a repetirse."
+                    </p>
+                    <p class="testimony-author" id="testimony-author">— Eva Laube, sobreviviente</p>
+                    <p class="testimony-source" id="testimony-source">Testimonio del libro "Frauenprotokolle" (Protocolos de Mujeres)</p>
+                </div>
+            </div>
+            
+            <!-- Introducción -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="main-title">Villa Baviera: Del dolor a la Esperanza</h2>
+                <div class="section-content">
+                    <p class="section-text" id="intro-text">Villa Baviera, anteriormente conocida como Colonia Dignidad, representa uno de los capítulos más complejos y dolorosos de la historia reciente de Chile. Este lugar, que hoy es el hogar de la Agrupación Voces de Mujeres Unidas, fue en el pasado el escenario de graves violaciones a los derechos humanos durante décadas, pero hoy, con resiliencia y amor, se transforma en un territorio de esperanza y reparación.</p>
+                </div>
+            </div>
+
+            <!-- Los Orígenes -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="origins-title">Los Orígenes (1961-1973)</h2>
+                <div class="section-content">
+                    <p class="section-text" id="origins-text-1">En 1961, Paul Schäfer, un predicador alemán de orientación bautista, llegó a Chile con un grupo de seguidores fundando bajo el amparo y beneplácito del gobierno de turno la Sociedad Benefactora y Educacional DIGNIDAD, que luego pasó a ser llamada COLONIA DIGNIDAD. Se ubicó en la zona rural de Parral, en la región del Maule, y muy pronto destacó como un proyecto de desarrollo social y ayuda a los habitantes de una zona rural completamente postergada.</p>
+                    <p class="section-text" id="origins-text-2">La promesa que convenció, movió los ánimos e hizo trasladarse de Alemania a Chile a un grupo de 200 integrantes dejando atrás todo lo logrado, fue la profunda convicción de ayudar al prójimo desvalido y que luego de la etapa inicial de instalación se dedicarían a formar la comunidad de familias con su propio hogar. Sin embargo, Desde el principio, la colonia fue un régimen sectario aislado en el que se separaba a los niños de sus padres, se prohibían las relaciones amorosas entre ellos, se impedía tener hijos, se denunciaba a los disidentes y se prohibía el contacto con el exterior.</p>
+                    <p class="section-text" id="origins-text-3">Como consta en los reportes de prensa de 1967 y 1968 y en actas de debates políticos a nivel gubernamental y parlamentario, el Estado chileno no actuó para impedir que el enclave deviniera en un espacio sin derechos humanos. Desde sus inicios, la colonia funcionó como un sistema de coerción: se separaba a los niños de sus padres, se prohibían las relaciones afectivas, se impedía tener hijos, se denunciaba a los disidentes y se prohibía todo contacto con el exterior.</p>
+                </div>
+            </div>
+
+            <!-- Los Años Oscuros -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="dark-years-title">Los Años (1973-1990)</h2>
+                <div class="section-content">
+                    <p class="section-text" id="dark-years-text-1">Una vez producido el golpe de Estado del 11 de septiembre de 1973, un grupo de colonos líderes cercanos a Paul Schäfer, se convierten en aliado del gobierno de facto y prestan ayuda logística en diferentes oportunidades. La admiración mutua entre las nuevas autoridades y la dirigencia de la Colonia es innegable y lleva a que la dirigencia de la Colonia facilitara dependencias y logística para operaciones de persecución a opositores del régimen que, posteriormente, fueron reveladas en los testimonios de los informes de "verdad y reconciliación" y "Rettig".</p>
+                    <p class="section-text" id="dark-years-text-2">Estos sucesos comprometerían hasta el día de hoy la reputación de la Colonia y ha llevado a extensos juicios, investigaciones y demandas. Actualmente hay una amenaza de expropiación vigente que peligra el futuro laboral y existencial de los habitantes y trabajadores.</p>
+                    <p class="section-text" id="dark-years-text-3">Estos hechos fueron expuestos posteriormente en los informes de "Verdad y Reconciliación" y "Rettig", a través de testimonios que acreditaron casos de tortura y homicidio por parte de la DINA y sus colaboradores; varias causas siguen en investigación.</p>
+                </div>
+            </div>
+
+            <!-- El Proceso de Revelación -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="revelation-title">El Proceso de Revelación (1990-2005)</h2>
+                <div class="section-content">
+                    <p class="section-text" id="revelation-text-1">En la década de 1984 a 1988 vuelven a surgir testimonios de integrantes de la Comunidad que huyen hacia Alemania denunciando privación de libertad, abuso de menores y delitos de involucramiento en crímenes de carácter político. Todo esto deriva en una investigación judicial a cargo de dos ministros de la Corte de Apelaciones que logran, solo en parte, dilucidar las denuncias. No obstante, con el cambio de signo político, el recién electo Presidente Patricio Aylwin cancela en 1990 la personalidad jurídica de la Sociedad Benefactora y Educacional DIGNIDAD.</p>
+                    <p class="section-text" id="revelation-text-2">Las investigaciones judiciales revelaron un patrón sistemático de abuso sexual, trabajo forzado, experimentos médicos sin consentimiento y violaciones masivas a los derechos humanos. En 1996, el líder de la secta, Paul Schäfer, fue acusado de abusos contra menores chilenos, lo que generó presión permanente sobre la policía que intensificó su búsqueda. Se dio a la fuga y en 1997 abandonó para siempre la colonia; fue ubicado en marzo de 2005 en Argentina gracias a una investigación periodística. Schäfer murió en 2010 en el Hospital Penitenciario de Santiago, sin reconocer nada de lo que se le acusaba ni pedir perdón a sus víctimas ni a sus seguidores, a quienes traicionó en lo más sagrado: su fe y confianza.</p>
+                    <p class="section-text" id="revelation-text-3">Con el cambio político, en 1990 el presidente Patricio Aylwin, mediante el Decreto N.º 143, canceló la personalidad jurídica de la Sociedad Benefactora y Educacional DIGNIDAD y ordenó a los organismos del Estado fiscalizar las actividades de la colonia. Se presentaron denuncias tributarias y laborales; a las enfermeras del hospital se les retiró la autorización profesional, el médico jefe fue procesado y se ordenó el cierre del recinto. Paralelamente, la prensa nacional e internacional cubrió extensamente lo ocurrido.</p>
+                </div>
+            </div>
+
+            <!-- La Transformación -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="transformation-title">La Transformación hacia Villa Baviera (2005-2017)</h2>
+                <div class="section-content">
+                    <p class="section-text" id="transformation-text-1">Si bien el fin del régimen de Paul Schäfer abre las puertas de la colonia y ofrece a todos los miembros la oportunidad de seguir su propio camino y vivir y desarrollarse sin restricciones, las consecuencias de los 40 años requieren un proceso de sanación y reparación en varias etapas. Se busca la ayuda de expertos en cuestiones económicas, y otro grupo de expertos en salud mental ayuda a los colonos a superar y sanar los traumas del pasado. Se reactivan las relaciones con la embajada alemana y el Gobierno chileno nombra a Hermann Schwember administrador especial.</p>
+                    <p class="section-text" id="transformation-text-2">En el año 2005 los Colonos recibieron su primer sueldo, la gran mayoría de los ex -- niños colonos, quienes fueron traídos desde Alemania, ya tenían más 50 o 60 años de edad.</p>
+                    <p class="section-text" id="transformation-text-3">Los sobrevivientes y sus familias trabajaron incansablemente para preservar la memoria histórica y garantizar que estos hechos no se repitieran. Se establecieron programas de reparación para las víctimas y se promovió la apertura de archivos y documentos que permitieran conocer toda la verdad.</p>
+                </div>
+            </div>
+
+            <!-- Fundación -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="foundation-title">El Nacimiento de Voces de Mujeres Unidas (2019)</h2>
+                <div class="section-content">
+                    <p class="section-text" id="foundation-text-1">En 2019, un grupo de mujeres sobrevivientes y activistas comprometidas con la transformación del territorio fundaron Voces de Mujeres Unidas. Esta organización nació con un propósito doble: reparar las secuelas físicas, psicológicas y socio-económicas de tres generaciones de colonos, y proyectar un futuro digno y sostenible.</p>
+                    <p class="section-text" id="foundation-text-2">La agrupación se establece como un ejemplo único a nivel mundial: un territorio donde se está escribiendo la historia de cómo transformar el dolor en esperanza, la memoria en herramienta de cambio, y las víctimas en protagonistas de su propio futuro.</p>
+                </div>
+            </div>
+
+            <!-- El Museo -->
+            <div class="history-section fade-in-up">
+                <h2 class="section-title" id="museum-title">El Museo histórico de la Comunidad de Villa Baviera</h2>
+                <div class="section-content">
+                    <p class="section-text" id="museum-text-1">Hoy, Villa Baviera alberga un museo que preserva la memoria histórica de los hechos ocurridos. Este espacio contiene exposiciones documentales, testimonios de sobrevivientes y evidencias de los crímenes cometidos, pero también muestra el proceso de transformación y esperanza.</p>
+                    <p class="section-text" id="museum-text-2">El museo no solo sirve como un lugar de memoria, sino también como un centro educativo que busca promover los derechos humanos y prevenir la repetición de estos hechos. Las visitas guiadas incluyen testimonios directos de sobrevivientes y explicaciones sobre las líneas de trabajo actuales de la agrupación.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote Destacada -->
+        <div class="quote-section">
+            <p class="quote-text" id="quote-text">"La memoria no es solo recordar el pasado, sino construir un futuro donde la dignidad humana sea respetada y protegida."</p>
+        </div>
+
+        <!-- Presente -->
+        <div class="present-section">
+            <div class="container">
+                <h2 class="present-title" id="present-title">Nuestro Trabajo Actual: Transformando Historia en Esperanza</h2>
+                <p class="present-intro" id="present-intro">Hoy, Villa Baviera es un territorio de esperanza donde trabajamos en 3 líneas estratégicas para dignificar la vida de sobrevivientes y sus familias:</p>
+                
+                <div class="present-grid">
+                    <div class="present-item">
+                        <h3 class="present-item-title" id="present-1-title">Ayuda integral a familias</h3>
+                        <p class="present-item-desc" id="present-1-desc">Atención especializada para sobrevivientes que requieren cuidados específicos tras décadas de vulneraciones.</p>
+                    </div>
+                    <div class="present-item">
+                        <h3 class="present-item-title" id="present-2-title">Museo histórico comunidad Villa Baviera</h3>
+                        <p class="present-item-desc" id="present-2-desc">Modernización y digitalización para preservar testimonios y educar a futuras generaciones.</p>
+                    </div>
+                    <div class="present-item">
+                        <h3 class="present-item-title" id="present-3-title">Nueva Aldea sostenible</h3>
+                        <p class="present-item-desc" id="present-3-desc">Viviendas propias y dignas de carácter ecológicas para la reubicación digna de familias.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="proyectos.html" class="present-btn" id="present-btn">Conoce Nuestros Proyectos</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 id="footer-contact-title">Contacto</h3>
+                    <p>📍 Villa Baviera (ex-Colonia Dignidad), Parral, Maule, Chile</p>
+                    <p>📧 contacto@vocesdemujeresunidas.org</p>
+                    <p>📞 +56 9 XXXX XXXX</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 id="footer-follow-title">Síguenos</h3>
+                    <a href="https://www.facebook.com/memoria.villabaviera" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/vocesdemujeresunidas/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#linkedin">LinkedIn</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 id="footer-collaborate-title">Colabora</h3>
+                    <a href="#donar" class="btn-donate" id="footer-donate-btn" onclick="event.preventDefault(); window.open('https://www.paypal.com/donate/?hosted_button_id=QHFGQRJQQG8YU','_blank','noopener');">Hacer una donación</a>
+                    <p style="margin-top: 1rem;" id="footer-donate-text">Tu apoyo nos ayuda a transformar la memoria histórica en esperanza y a construir un futuro digno para nuestras familias.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p id="footer-copyright">&copy; 2025 Agrupación Voces de Mujeres Unidas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="contact-bar">
+        <a href="mailto:agrupmadresc@gmail.com">📧 agrupmadresc@gmail.com</a>
+        <a href="tel:+56990153201">📞 +56 9 9015 3201</a>
+    </div>
+
+    <script>
+    /*
+        console.log('🔧 INICIANDO DEBUG DEL SELECTOR DE IDIOMAS...');
+        
+        const translations = {
+            es: {
+                inicio: "Inicio",
+                nuestraHistoria: "Historia",
+                quienesSomos: "Quiénes Somos",
+                proyectos: "Proyectos",
+                transparencia: "Transparencia",
+                contacto: "Contacto",
+                donar: "Donar",
+                pageTitle: "Nuestra Historia",
+                pageSubtitle: "Villa Baviera: del dolor a la esperanza, el territorio donde se escribe la historia de cómo transformar la memoria en herramienta de cambio",
+                testimonyText: '"Fui golpeada, fui encerrada por semanas, me obligaron a trabajar 16 horas al día sin descanso y sin pago, no me dejaron hablar con mis padres y tampoco con mis hermanos... Mi infancia y juventud fueron robadas, pero hoy estoy aquí, de pie, contando mi historia para que nunca más vuelva a repetirse."',
+                testimonyAuthor: "— Eva Laube, sobreviviente",
+                testimonySource: 'Testimonio del libro "Frauenprotokolle" (Protocolos de Mujeres)',
+                mainTitle: "Villa Baviera: Del dolor a la Esperanza",
+                introText: "Villa Baviera, anteriormente conocida como Colonia Dignidad, representa uno de los capítulos más complejos y dolorosos de la historia reciente de Chile. Este lugar, que hoy es el hogar de la Agrupación Voces de Mujeres Unidas, fue en el pasado el escenario de graves violaciones a los derechos humanos durante décadas, pero hoy, con resiliencia y amor, se transforma en un territorio de esperanza y reparación.",
+                originsTitle: "Los Orígenes (1961-1973)",
+                originsText1: "En 1961, Paul Schäfer, un predicador alemán de orientación bautista, llegó a Chile con un grupo de seguidores fundando bajo el amparo y beneplácito del gobierno de turno la Sociedad Benefactora y Educacional DIGNIDAD, que luego pasó a ser llamada COLONIA DIGNIDAD. Se ubicó en la zona rural de Parral, en la región del Maule, y muy pronto destacó como un proyecto de desarrollo social y ayuda a los habitantes de una zona rural completamente postergada.",
+                originsText2: "La promesa que convenció, movió los ánimos e hizo trasladarse de Alemania a Chile a un grupo de 200 integrantes dejando atrás todo lo logrado, fue la profunda convicción de ayudar al prójimo desvalido y que luego de la etapa inicial de instalación se dedicarían a formar la comunidad de familias con su propio hogar. Sin embargo, desde el principio, la colonia fue un régimen sectario aislado en el que se separaba a los niños de sus padres, se prohibían las relaciones amorosas entre ellos, se impedía tener hijos, se denunciaba a los disidentes y se prohibía el contacto con el exterior.",
+                originsText3: "Como consta en los reportes de prensa de 1967 y 1968 y en actas de debates políticos a nivel gubernamental y parlamentario, el Estado chileno no actuó para impedir que el enclave deviniera en un espacio sin derechos humanos. Desde sus inicios, la colonia funcionó como un sistema de coerción: se separaba a los niños de sus padres, se prohibían las relaciones afectivas, se impedía tener hijos, se denunciaba a los disidentes y se prohibía todo contacto con el exterior.",
+                darkYearsTitle: "Los Años (1973-1990)",
+                darkYearsText1: "Una vez producido el golpe de Estado del 11 de septiembre de 1973, un grupo de colonos líderes cercanos a Paul Schäfer, se convierten en aliado del gobierno de facto y prestan ayuda logística en diferentes oportunidades. La admiración mutua entre las nuevas autoridades y la dirigencia de la Colonia es innegable y lleva a que la dirigencia de la Colonia facilitara dependencias y logística para operaciones de persecución a opositores del régimen.",
+                darkYearsText2: "Estos sucesos comprometerían hasta el día de hoy la reputación de la Colonia y ha llevado a extensos juicios, investigaciones y demandas. Actualmente hay una amenaza de expropiación vigente que peligra el futuro laboral y existencial de los habitantes y trabajadores.",
+                darkYearsText3: "Estos hechos fueron expuestos posteriormente en los informes de 'Verdad y Reconciliación' y 'Rettig', a través de testimonios que acreditaron casos de tortura y homicidio por parte de la DINA y sus colaboradores; varias causas siguen en investigación.",
+                revelationTitle: "El Proceso de Revelación (1990-2005)",
+                revelationText1: "En la década de 1984 a 1988 vuelven a surgir testimonios de integrantes de la Comunidad que huyen hacia Alemania denunciando privación de libertad, abuso de menores y delitos de involucramiento en crímenes de carácter político. Todo esto deriva en una investigación judicial a cargo de dos ministros de la Corte de Apelaciones que logran, solo en parte, dilucidar las denuncias.",
+                revelationText2: "Las investigaciones judiciales revelaron un patrón sistemático de abuso sexual, trabajo forzado, experimentos médicos sin consentimiento y violaciones masivas a los derechos humanos. En 1996, el líder de la secta, Paul Schäfer, fue acusado de abusos contra menores chilenos, lo que generó presión permanente sobre la policía que intensificó su búsqueda. Se dio a la fuga y en 1997 abandonó para siempre la colonia; fue ubicado en marzo de 2005 en Argentina gracias a una investigación periodística. Schäfer murió en 2010 en el Hospital Penitenciario de Santiago, sin reconocer nada de lo que se le acusaba ni pedir perdón a sus víctimas ni a sus seguidores, a quienes traicionó en lo más sagrado: su fe y confianza.",
+                revelationText3: "Con el cambio político, en 1990 el presidente Patricio Aylwin, mediante el Decreto N.º 143, canceló la personalidad jurídica de la Sociedad Benefactora y Educacional DIGNIDAD y ordenó a los organismos del Estado fiscalizar las actividades de la colonia. Se presentaron denuncias tributarias y laborales; a las enfermeras del hospital se les retiró la autorización profesional, el médico jefe fue procesado y se ordenó el cierre del recinto. Paralelamente, la prensa nacional e internacional cubrió extensamente lo ocurrido.",
+                transformationTitle: "La Transformación hacia Villa Baviera (2005-2017)",
+                transformationText1: "Si bien el fin del régimen de Paul Schäfer abre las puertas de la colonia y ofrece a todos los miembros la oportunidad de seguir su propio camino y vivir y desarrollarse sin restricciones, las consecuencias de los 40 años requieren un proceso de sanación y reparación en varias etapas. Se busca la ayuda de expertos en cuestiones económicas, y otro grupo de expertos en salud mental ayuda a los colonos a superar y sanar los traumas del pasado. Se reactivan las relaciones con la embajada alemana y el Gobierno chileno nombra a Hermann Schwember administrador especial.",
+                transformationText2: "En el año 2005 los Colonos recibieron su primer sueldo, la gran mayoría de los ex -- niños colonos, quienes fueron traídos desde Alemania, ya tenían más 50 o 60 años de edad.",
+                transformationText3: "Los sobrevivientes y sus familias trabajaron incansablemente para preservar la memoria histórica y garantizar que estos hechos no se repitieran.",
+                foundationTitle: "El Nacimiento de Voces de Mujeres Unidas (2019)",
+                foundationText1: "En 2019, un grupo de mujeres sobrevivientes y activistas comprometidas con la transformación del territorio fundaron Voces de Mujeres Unidas. Esta organización nació con un propósito doble: reparar las secuelas físicas, psicológicas y socio-económicas de tres generaciones de colonos, y proyectar un futuro digno y sostenible.",
+                foundationText2: "La agrupación se establece como un ejemplo único a nivel mundial: un territorio donde se está escribiendo la historia de cómo transformar el dolor en esperanza, la memoria en herramienta de cambio, y las víctimas en protagonistas de su propio futuro.",
+                museumTitle: "El Museo histórico de la Comunidad de Villa Baviera",
+                museumText1: "Hoy, Villa Baviera alberga un museo que preserva la memoria histórica de los hechos ocurridos. Este espacio contiene exposiciones documentales, testimonios de sobrevivientes y evidencias de los crímenes cometidos, pero también muestra el proceso de transformación y esperanza.",
+                museumText2: "El museo no solo sirve como un lugar de memoria, sino también como un centro educativo que busca promover los derechos humanos y prevenir la repetición de estos hechos. Las visitas guiadas incluyen testimonios directos de sobrevivientes y explicaciones sobre las líneas de trabajo actuales de la agrupación.",
+                quoteText: '"La memoria no es solo recordar el pasado, sino construir un futuro donde la dignidad humana sea respetada y protegida."',
+                presentTitle: "Nuestro Trabajo Actual: Transformando Historia en Esperanza",
+                presentIntro: "Hoy, Villa Baviera es un territorio de esperanza donde trabajamos en 3 líneas estratégicas para dignificar la vida de sobrevivientes y sus familias:",
+                present1Title: "Ayuda integral a familias",
+                present1Desc: "Atención especializada para sobrevivientes que requieren cuidados específicos tras décadas de vulneraciones.",
+                present2Title: "Museo histórico comunidad Villa Baviera",
+                present2Desc: "Modernización y digitalización para preservar testimonios y educar a futuras generaciones.",
+                present3Title: "Nueva Aldea sostenible",
+                present3Desc: "Viviendas propias y dignas de carácter ecológicas para la reubicación digna de familias.",
+                presentBtn: "Conoce Nuestros Proyectos",
+                footerContactTitle: "Contacto",
+                footerFollowTitle: "Síguenos",
+                footerCollaborateTitle: "Colabora",
+                footerDonateBtn: "Hacer una donación",
+                footerDonateText: "Tu apoyo nos ayuda a transformar la memoria histórica en esperanza y a construir un futuro digno para nuestras familias.",
+                footerCopyright: "© 2025 Agrupación Voces de Mujeres Unidas. Todos los derechos reservados."
+            },
+            en: {
+                inicio: "Home",
+                nuestraHistoria: "Our History",
+                quienesSomos: "About Us",
+                proyectos: "Projects",
+                transparencia: "Transparency",
+                contacto: "Contact",
+                donar: "Donate",
+                pageTitle: "Our History",
+                pageSubtitle: "Villa Baviera: from pain to hope, the territory where the story of how to transform memory into a tool for change is written",
+                testimonyText: '"I was beaten, I was locked up for weeks, they forced me to work 16 hours a day without rest and without pay, they didn\'t let me talk to my parents or my siblings... My childhood and youth were stolen, but today I stand here, telling my story so that it never happens again."',
+                testimonyAuthor: "— Eva Laube, survivor",
+                testimonySource: 'Testimony from the book "Frauenprotokolle" (Women\'s Protocols)',
+                mainTitle: "Villa Baviera: From Pain to Hope",
+                introText: "Villa Baviera, formerly known as Colonia Dignidad, represents one of the most complex and painful chapters in Chile's recent history. This place, which today is home to the Association Voices of United Women, was in the past the scene of serious human rights violations for decades, but today, with resilience and love, it transforms into a territory of hope and reparation.",
+                originsTitle: "The Origins (1961-1973)",
+                originsText1: "In 1961, Paul Schäfer, a German Baptist-oriented preacher arrived in Chile along with a group of followers founding under the protection and approval of the government of the time the Beneficial and Educational Society DIGNITY, which later came to be called COLONIA DIGNIDAD.",
+                originsText2: "The promise that convinced, moved the spirits and made a group of 200 members move from Germany to Chile leaving behind everything achieved, was the deep conviction of helping the helpless neighbor and that after the initial installation stage they would dedicate themselves to forming the community of families with their own home. However, from the beginning, the colony was an isolated sectarian regime in which children were separated from their parents, loving relationships were prohibited, having children was prevented, dissidents were denounced, and contact with the outside world was forbidden.",
+                originsText3: "As reported by the press in 1967 and 1968 and recorded in political debates at governmental and parliamentary levels, the Chilean state did not act to prevent the enclave from becoming a human-rights-free zone. From its outset, the colony operated as a coercive system: children were separated from their parents, affective relationships were banned, having children was prevented, dissidents were denounced, and all contact with the outside was forbidden.",
+                darkYearsTitle: "The Years (1973-1990)",
+                darkYearsText1: "Once the coup d'état of September 11, 1973 occurred, a group of leading colonists close to Paul Schäfer, become allies of the de facto government and provide logistical help on different occasions.",
+                darkYearsText2: "These events would compromise the reputation of the Colony to this day and have led to extensive trials, investigations and lawsuits.",
+                darkYearsText3: "These facts were later exposed in the 'Truth and Reconciliation' and 'Rettig' reports through testimonies that documented cases of torture and murder by the DINA and its collaborators; several cases remain under investigation.",
+                revelationTitle: "The Revelation Process (1990-2005)",
+                revelationText1: "In the decade from 1984 to 1988, testimonies from Community members who fled to Germany denouncing deprivation of liberty, child abuse and crimes of involvement in political crimes resurfaced.",
+                revelationText2: "Judicial investigations revealed a systematic pattern of sexual abuse, forced labor, medical experiments without consent and massive human rights violations. In 1996, the sect leader, Paul Schäfer, was accused of abusing Chilean minors, which put sustained pressure on the police and intensified the search. He went into hiding and in 1997 left the colony for good; he was located in March 2005 in Argentina thanks to investigative journalism. Schäfer died in 2010 in the Santiago prison hospital without acknowledging guilt or asking forgiveness from his victims or followers, whom he betrayed in their most sacred trust.",
+                revelationText3: "With the political shift, in 1990 President Patricio Aylwin, through Decree No. 143, cancelled the legal status of the Beneficent and Educational Society DIGNIDAD and instructed state agencies to oversee the colony's activities. Tax and labor complaints were filed; the hospital nurses lost their professional authorization, the chief physician was prosecuted, and the hospital was ordered closed. In parallel, national and international press covered the events extensively.",
+                transformationTitle: "The Transformation to Villa Baviera (2005-2017)",
+                transformationText1: "Although the end of Paul Schäfer's regime opens the doors of the Colony and offers all members the opportunity to begin their own path and to live and develop without restrictions, the consequences of 40 years imply a multilevel sanitation and reparation process.",
+                transformationText2: "In 2005, the Colonists received their first salary, the vast majority of former colony children, who were brought from Germany, were already over 50 or 60 years old.",
+                transformationText3: "Survivors and their families worked tirelessly to preserve historical memory and ensure that these events would not be repeated.",
+                foundationTitle: "The Birth of Voices of United Women (2019)",
+                foundationText1: "In 2019, a group of women survivors and activists committed to territory transformation founded Voices of United Women.",
+                foundationText2: "The association establishes itself as a unique example worldwide: a territory where the story of how to transform pain into hope, memory into a tool for change, and victims into protagonists of their own future is being written.",
+                museumTitle: "The Historical Museum of the Villa Baviera Community",
+                museumText1: "Today, Villa Baviera houses a museum that preserves the historical memory of the events that occurred.",
+                museumText2: "The museum not only serves as a place of memory, but also as an educational center that seeks to promote human rights and prevent the repetition of these events. Guided tours include direct testimonies from survivors and explanations of the group's current lines of work.",
+                quoteText: '"Memory is not just remembering the past, but building a future where human dignity is respected and protected."',
+                presentTitle: "Our Current Work: Transforming History into Hope",
+                presentIntro: "Today, Villa Baviera is a territory of hope where we work on 3 strategic lines to dignify the lives of survivors and their families:",
+                present1Title: "Comprehensive family assistance",
+                present1Desc: "Specialized care for survivors who require specific care after decades of violations.",
+                present2Title: "Villa Baviera Historical Community Museum",
+                present2Desc: "Modernization and digitization to preserve testimonies and educate future generations.",
+                present3Title: "New sustainable village",
+                present3Desc: "Own and dignified ecological housing for dignified relocation of families.",
+                presentBtn: "Learn About Our Projects",
+                footerContactTitle: "Contact",
+                footerFollowTitle: "Follow Us",
+                footerCollaborateTitle: "Collaborate",
+                footerDonateBtn: "Make a donation",
+                footerDonateText: "Your support helps us transform historical memory into hope and build a dignified future for our families.",
+                footerCopyright: "© 2025 Association Voices of United Women. All rights reserved."
+            },
+            de: {
+                inicio: "Startseite",
+                nuestraHistoria: "Unsere Geschichte",
+                quienesSomos: "Über Uns",
+                proyectos: "Projekte",
+                transparencia: "Transparenz",
+                contacto: "Kontakt",
+                donar: "Spenden",
+                pageTitle: "Unsere Geschichte",
+                pageSubtitle: "Villa Baviera: vom Schmerz zur Hoffnung, das Territorium, wo die Geschichte geschrieben wird, wie man Erinnerung in ein Werkzeug des Wandels verwandelt",
+                testimonyText: '"Ich wurde geschlagen, wochenlang eingesperrt, musste 16 Stunden am Tag ohne Pause und ohne Bezahlung arbeiten, durfte nicht mit meinen Eltern und auch nicht mit meinen Geschwistern sprechen... Meine Kindheit und Jugend wurden mir gestohlen, aber heute stehe ich hier und erzähle meine Geschichte, damit sie sich nie wiederholt."',
+                testimonyAuthor: "— Eva Laube, Überlebende",
+                testimonySource: 'Zeugnis aus dem Buch "Frauenprotokolle"',
+                mainTitle: "Villa Baviera: Vom Schmerz zur Hoffnung",
+                introText: 'Villa Baviera, früher bekannt als Colonia Dignidad, stellt eines der komplexesten und schmerzhaftesten Kapitel der jüngeren Geschichte Chiles dar. Dieser Ort, der heute den Verein der „Stimme der Vereinigten Frauen" beherbergt, war in der Vergangenheit jahrzehntelang Schauplatz schwerwiegender Menschenrechtsverletzungen, doch heute hat er sich mit Widerstandskraft und Liebe in ein Gebiet der Hoffnung und Wiedergutmachung verwandelt.',
+                originsTitle: "Die Anfänge (1961-1973)",
+                originsText1: "Im Jahr 1961 kam Paul Schäfer, ein deutscher baptistisch orientierter Prediger, mit einer Gruppe von Anhängern nach Chile und gründete die Sociedad Benefactora y Educacional DIGNIDAD, die später unter dem Namen COLONIA DIGNIDAD bekannt wurde.",
+                originsText2: "Das Versprechen, das überzeugte, den Geist bewegte und eine Gruppe von 200 Mitgliedern dazu brachte, von Deutschland nach Chile zu ziehen und alles Erreichte hinter sich zu lassen, war die tiefe Überzeugung, den Unterprivilegierten zu helfen und sich nach der ersten Aufbauphase der Bildung einer Gemeinschaft von Familien mit einem eigenen Haus zu widmen. Die Kolonie war von Anfang an ein abgeschottetes Sektenregime, in dem Kinder von ihren Eltern getrennt wurden, Liebesbeziehungen untereinander verboten waren, das Kinderkriegen verhindert wurde, Abweichler denunziert wurden und Kontakte nach außen untersagt waren.",
+                originsText3: "Wie aus den Medienberichten der Jahre 1967 und 1968 sowie aus politischen Debatten auf Regierungs- und Parlamentsebene hervorgeht, unternahm der chilenische Staat nichts, um zu verhindern, dass sich die Enklave zu einem menschenrechtsfreien Raum entwickelte. Von Beginn an funktionierte die Kolonie als Zwangssystem: Trennung der Kinder von ihren Eltern, Verbot affektiver Beziehungen, Verhinderung von Nachwuchs, Denunziation von Abweichlern und striktes Kontaktverbot nach außen.",
+                darkYearsTitle: "Die Jahre (1973-1990)",
+                darkYearsText1: "Nach dem Staatsstreich vom 11. September 1973 wurde eine Gruppe führender Siedler, die Paul Schäfer nahe standen, zu Verbündeten der Militärregierung und leistete bei verschiedenen Gelegenheiten logistische Hilfe.",
+                darkYearsText2: "Diese Ereignisse haben bis heute den Ruf der Colonia beeinträchtigt und zu umfangreichen Prozessen, Untersuchungen und Klagen geführt.",
+                darkYearsText3: "Diese Vorgänge wurden später in den Zeugenaussagen der Berichte „Wahrheit und Versöhnung" und „Rettig" offengelegt, in denen Fälle von Folter und Mord durch die DINA und deren Mitarbeiter zum Teil aufgedeckt wurden und teils noch untersucht werden.",
+                revelationTitle: "Der Aufdeckungsprozess (1990-2005)",
+                revelationText1: "Im Jahrzehnt zwischen 1984 und 1988 tauchten erneut Zeugenaussagen von nach Deutschland geflohenen Mitgliedern der Gemeinschaft auf, die Freiheitsberaubung, Missbrauch von Minderjährigen und Beteiligung an politischen Straftaten anprangerten.",
+                revelationText2: "Die gerichtlichen Untersuchungen deckten ein systematisches Muster von sexuellem Missbrauch, Zwangsarbeit, medizinischen Experimenten ohne Zustimmung und massiven Menschenrechtsverletzungen auf. 1996 wurde der Leiter der Sekte, Paul Schäfer, des Missbrauchs von chilenischen Minderjährigen beschuldigt, was zu einem ständigen Druck auf die Polizei führte, die intensiv nach ihm suchte. Er tauchte unter und verließ 1997 die Kolonie für immer; im März 2005 wurde er dank einer journalistischen Recherche in Argentinien gefunden. Schäfer starb im April 2010 im Strafvollzugskrankenhaus von Santiago, ohne etwas von dem zuzugeben, was ihm vorgeworfen wurde, und ohne seine Opfer oder Anhänger um Vergebung zu bitten.",
+                revelationText3: "Mit dem Wechsel der politischen Vorzeichen hob der neu gewählte Präsident Patricio Aylwin 1990 per Dekret Nr. 143 den Rechtsstatus der Sociedad Benefactora y Educacional DIGNIDAD auf. Alle staatlichen Behörden wurden angewiesen, die Tätigkeit der Kolonie zu überwachen. Es wurden Beschwerden in Steuer- und Arbeitsangelegenheiten eingereicht; den Krankenschwestern des Krankenhauses wurde die Berufszulassung entzogen, der Chefarzt wurde strafrechtlich verfolgt und die Schließung des Krankenhauses angeordnet. Gleichzeitig berichteten nationale und internationale Medien ausführlich über die Ereignisse.",
+                transformationTitle: "Die Umwandlung in die Villa Bavaria (2005-2017)",
+                transformationText1: "Während das Ende des Regimes von Paul Schäfer die Türen der Kolonie öffnet und allen Mitgliedern die Möglichkeit bietet, ihren eigenen Weg zu gehen, erfordern die Folgen der 40 Jahre einen mehrstufigen Heilungs- und Reparaturprozess.",
+                transformationText2: "Ab dem Jahr 2005 erhielten die noch arbeitsfähigen Siedler ihr erstes Gehalt, von denen einige bereits in ihren 50er und 60er Jahren waren.",
+                transformationText3: "Dies jetzt noch verbleibenden Siedler und ihre Familien arbeiteten unermüdlich daran, die historische Erinnerung zu bewahren und sicherzustellen, dass sich diese Ereignisse nicht wiederholen.",
+                foundationTitle: 'Die Entstehung des Vereins: „Stimme der Vereinigten Frauen" (2019)',
+                foundationText1: "2019 gründete eine Gruppe von Frauen und Müttern, die in dieser Colonia aufgewachsen sind, die sich für die Umgestaltung des Gebiets einsetzen, den Verein: Stimme der Vereinigten Frauen.",
+                foundationText2: "Die Gruppe hat sich als einzigartiges Beispiel etabliert: ein Gebiet, in dem die Geschichte der Umwandlung von Schmerz in Hoffnung, von Erinnerung in ein Werkzeug für den Wandel und von Opfern in Protagonisten ihrer eigenen Zukunft geschrieben wird.",
+                museumTitle: "Das historische Museum der Gemeinde Villa Baviera",
+                museumText1: "Heute beherbergt die Villa Baviera ein Museum, das die historische Erinnerung an die Ereignisse bewahrt.",
+                museumText2: "Das Museum ist nicht nur ein Ort des Gedenkens, sondern auch ein Bildungszentrum, das sich für die Förderung der Menschenrechte einsetzt und verhindern will, dass sich diese Ereignisse wiederholen. Die Führungen beinhalten direkte Aussagen von Zeitzeugen und Erläuterungen zu den aktuellen Arbeitsbereichen der Gruppe.",
+                quoteText: '"Erinnerung ist nicht nur das Erinnern an die Vergangenheit, sondern auch der Aufbau einer Zukunft, in der die Menschenwürde geachtet und geschützt wird".',
+                presentTitle: "Unsere Arbeit heute: Geschichte in Hoffnung verwandeln",
+                presentIntro: "Heute ist die Villa Baviera ein Ort der Hoffnung, an dem wir in drei strategischen Bereichen arbeiten, um das Leben der noch lebenden Siedler und deren Nachkommen und ihrer Familien zu verbessern:",
+                present1Title: "Umfassende Unterstützung für Familien",
+                present1Desc: "Spezialisierte Betreuung für noch lebende Siedler und deren Nachkommen, die nach jahrzehntelangen Verletzungen ihrer Grundrechte eine besondere Betreuung benötigen.",
+                present2Title: "Historisches Museum der Gemeinde Villa Baviera",
+                present2Desc: "Modernisierung und Digitalisierung, um Zeugnisse zu bewahren und künftige Generationen zu unterrichten.",
+                present3Title: "Nachhaltiges neues Dorf",
+                present3Desc: "Eigener, würdiger Wohnraum für die würdige Umsiedlung der Familien in ökologische Privathäuser.",
+                presentBtn: "Lernen Sie unsere Projekte kennen",
+                footerContactTitle: "Kontakt",
+                footerFollowTitle: "Folge Uns",
+                footerCollaborateTitle: "Zusammenarbeiten",
+                footerDonateBtn: "Spende machen",
+                footerDonateText: "Ihre Unterstützung hilft uns, die Erinnerung an die Vergangenheit in Hoffnung zu verwandeln und eine würdige Zukunft für unsere Familien aufzubauen.",
+                footerCopyright: "© 2025 Vereinigung Stimmen vereinter Frauen. Alle Rechte vorbehalten."
+            }
+        };
+
+        function changeLanguage(lang) {
+            console.log('🔄 Cambiando idioma a:', lang);
+            
+            const elements = {
+                'nav-inicio': 'inicio',
+                'nav-historia': 'nuestraHistoria',
+                'nav-quienes': 'quienesSomos',
+                'nav-proyectos': 'proyectos',
+                'nav-transparencia': 'transparencia',
+                'nav-contacto': 'contacto',
+                'btn-donar-header': 'donar',
+                'page-title': 'pageTitle',
+                'page-subtitle': 'pageSubtitle',
+                'testimony-text': 'testimonyText',
+                'testimony-author': 'testimonyAuthor',
+                'testimony-source': 'testimonySource',
+                'main-title': 'mainTitle',
+                'intro-text': 'introText',
+                'origins-title': 'originsTitle',
+                'origins-text-1': 'originsText1',
+                'origins-text-2': 'originsText2',
+                'origins-text-3': 'originsText3',
+                'dark-years-title': 'darkYearsTitle',
+                'dark-years-text-1': 'darkYearsText1',
+                'dark-years-text-2': 'darkYearsText2',
+                'dark-years-text-3': 'darkYearsText3',
+                'revelation-title': 'revelationTitle',
+                'revelation-text-1': 'revelationText1',
+                'revelation-text-2': 'revelationText2',
+                'revelation-text-3': 'revelationText3',
+                'transformation-title': 'transformationTitle',
+                'transformation-text-1': 'transformationText1',
+                'transformation-text-2': 'transformationText2',
+                'transformation-text-3': 'transformationText3',
+                'foundation-title': 'foundationTitle',
+                'foundation-text-1': 'foundationText1',
+                'foundation-text-2': 'foundationText2',
+                'museum-title': 'museumTitle',
+                'museum-text-1': 'museumText1',
+                'museum-text-2': 'museumText2',
+                'quote-text': 'quoteText',
+                'present-title': 'presentTitle',
+                'present-intro': 'presentIntro',
+                'present-1-title': 'present1Title',
+                'present-1-desc': 'present1Desc',
+                'present-2-title': 'present2Title',
+                'present-2-desc': 'present2Desc',
+                'present-3-title': 'present3Title',
+                'present-3-desc': 'present3Desc',
+                'present-btn': 'presentBtn',
+                'footer-contact-title': 'footerContactTitle',
+                'footer-follow-title': 'footerFollowTitle',
+                'footer-collaborate-title': 'footerCollaborateTitle',
+                'footer-donate-btn': 'footerDonateBtn',
+                'footer-donate-text': 'footerDonateText',
+                'footer-copyright': 'footerCopyright'
+            };
+
+            let elementsChanged = 0;
+            let elementsNotFound = [];
+
+            try {
+                Object.keys(elements).forEach(elementId => {
+                    const element = document.getElementById(elementId);
+                    if (element && translations[lang] && translations[lang][elements[elementId]]) {
+                        element.textContent = translations[lang][elements[elementId]];
+                        elementsChanged++;
+                    } else {
+                        elementsNotFound.push(elementId);
+                    }
+                });
+
+                localStorage.setItem('selectedLanguage', lang);
+                document.documentElement.lang = lang;
+
+                console.log('✅ Cambio completado:');
+                console.log(`   - Elementos cambiados: ${elementsChanged}`);
+                console.log(`   - Elementos no encontrados: ${elementsNotFound.length}`);
+                
+                if (elementsNotFound.length > 0) {
+                    console.warn('⚠️ Elementos no encontrados:', elementsNotFound);
+                }
+
+            } catch (error) {
+                console.error('❌ Error en changeLanguage:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM cargado, inicializando...');
+            
+            // Menú hamburguesa
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (hamburgerBtn && navMenu) {
+                console.log('🍔 Menú hamburguesa configurado');
+                hamburgerBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('open');
+                    this.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('open');
+                        hamburgerBtn.textContent = '☰';
+                    });
+                });
+            }
+
+            // Selector de idiomas
+            const languageSelect = document.getElementById('languageSelect');
+            console.log('🌐 Selector de idiomas encontrado:', languageSelect ? 'SÍ' : 'NO');
+            
+            if (languageSelect) {
+                try {
+                    const savedLanguage = localStorage.getItem('selectedLanguage') || 'es';
+                    console.log('💾 Idioma guardado en localStorage:', savedLanguage);
+                    
+                    languageSelect.value = savedLanguage;
+                    console.log('🔧 Selector actualizado a:', languageSelect.value);
+                    
+                    if (savedLanguage !== 'es') {
+                        console.log('🚀 Aplicando traducciones al cargar...');
+                        changeLanguage(savedLanguage);
+                    }
+                    
+                    languageSelect.addEventListener('change', function(e) {
+                        console.log('👆 Usuario cambió idioma a:', e.target.value);
+                        changeLanguage(e.target.value);
+                    });
+            
+                    console.log('✅ Selector de idiomas completamente configurado');
+                    
+                } catch (error) {
+                    console.error('❌ Error configurando selector:', error);
+                }
+
+            // Sincronizar idioma entre pestañas
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'selectedLanguage') {
+                    var newLang = e.newValue || 'es';
+                    if (document.documentElement.lang !== newLang) {
+                        var selectEl = document.getElementById('languageSelect');
+                        if (selectEl) selectEl.value = newLang;
+                        try { changeLanguage(newLang); } catch (err) { console.error(err); }
+                    }
+                }
+            });
+            } else {
+                console.error('❌ No se encontró el elemento languageSelect');
+            }
+
+            // Botones de donación antiguos (no afecta al botón PayPal del header/footer)
+            document.querySelectorAll('.btn-donate-old').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open('https://paypal.me/annasw325', '_blank', 'noopener');
+                });
+            });
+            
+            console.log('🎉 Inicialización completada');
+        });
+    */
+    </script>
+    <script src="js/nuestra-historia-translations.js"></script>
+</body>
+</html>

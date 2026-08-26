@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(){try{var t=localStorage.getItem('vb-color-theme');document.documentElement.setAttribute('data-theme',(t==='original'?'original':'tierra'));}catch(e){document.documentElement.setAttribute('data-theme','tierra');}})();</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería - Voces de Mujeres Unidas</title>
@@ -56,7 +58,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(41, 41, 34, 0.95);
+            background: rgba(var(--primary-rgb), 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -152,7 +154,7 @@
 
         .language-dropdown:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(201, 176, 80, 0.3);
+            box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.3);
         }
 
         .language-dropdown option {
@@ -175,7 +177,7 @@
         }
 
         .btn-donate:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             color: var(--neutral-dark);
             transform: translateY(-2px);
         }
@@ -229,7 +231,7 @@
 
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(201, 176, 80, 0.3);
+            box-shadow: 0 15px 35px rgba(var(--accent-rgb), 0.3);
         }
 
         .gallery-image {
@@ -315,7 +317,7 @@
             bottom: -100px;
             left: 0;
             right: 0;
-            background: rgba(62, 59, 49, 0.9);
+            background: rgba(var(--secondary-rgb), 0.9);
             padding: 1.5rem;
             border-radius: 10px;
             backdrop-filter: blur(10px);
@@ -354,7 +356,7 @@
         }
 
         .lightbox-close:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             transform: scale(1.1);
         }
 
@@ -362,7 +364,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(201, 176, 80, 0.8);
+            background: rgba(var(--accent-rgb), 0.8);
             color: var(--neutral-dark);
             border: none;
             border-radius: 50%;
@@ -418,7 +420,7 @@
                 top: 64px;
                 left: 0;
                 width: 100%;
-                background: rgba(41,41,34,.98);
+                background: rgba(var(--primary-rgb), .98);
                 border-bottom: 1px solid var(--secondary-medium);
                 padding: .5rem .75rem;
                 flex-direction: column;
@@ -512,7 +514,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(41, 41, 34, 0.98);
+            background: rgba(var(--primary-rgb), 0.98);
             border-top: 1px solid var(--accent-gold);
             padding: 0.6rem 1rem;
             z-index: 2000;
@@ -541,6 +543,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 
 <body>
@@ -558,6 +561,12 @@
                     <li><a href="proyectos.html" class="nav-link" id="nav-proyectos">Proyectos</a></li>
                     <li style="display: none;"><a href="transparencia.html" class="nav-link" id="nav-transparencia">Transparencia</a></li>
                     <li><a href="contacto.html" class="nav-link" id="nav-contacto">Contacto</a></li>
+                    <li class="theme-switcher-item">
+                        <div class="theme-switcher" role="group" aria-label="Paleta de colores">
+                            <button type="button" class="theme-switcher-btn" data-theme-value="tierra">Tierra</button>
+                            <button type="button" class="theme-switcher-btn" data-theme-value="original">Original</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             
@@ -568,6 +577,10 @@
                         <option value="en">🇺🇸 EN</option>
                         <option value="de">🇩🇪 DE</option>
                     </select>
+                </div>
+                <div class="theme-switcher" role="group" aria-label="Paleta de colores">
+                    <button type="button" class="theme-switcher-btn" data-theme-value="tierra">Tierra</button>
+                    <button type="button" class="theme-switcher-btn" data-theme-value="original">Original</button>
                 </div>
                 <a href="#donar" class="btn-donate" id="btn-donar-header" onclick="event.preventDefault(); window.open('https://www.paypal.com/donate/?hosted_button_id=QHFGQRJQQG8YU','_blank','noopener');">Donar</a>
             </div>
@@ -998,5 +1011,6 @@
 
         console.log('✅ Galería inicializada correctamente');
     </script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

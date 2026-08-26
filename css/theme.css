@@ -1,0 +1,104 @@
+/* Paletas de color — se puede volver atrás con el interruptor del encabezado.
+   Tierra (por defecto): verde bosque, naranja terracota, marrón tierra.
+   Original: oliva y oro actuales. */
+
+:root,
+:root[data-theme="tierra"] {
+    --primary-dark: #243328;
+    --primary-rgb: 36, 51, 40;
+    --secondary-medium: #4A3728;
+    --secondary-rgb: 74, 55, 40;
+    --accent-gold: #E07A3A;
+    --accent-rgb: 224, 122, 58;
+    --accent-hover: #C5662E;
+    --accent-green: #6B9A74;
+    --neutral-light: #F3E6D0;
+    --neutral-dark: #1A1410;
+    --neutral-dark-rgb: 26, 20, 16;
+    --text-primary: #F3E6D0;
+    --text-dark: #1A1410;
+}
+
+:root[data-theme="original"] {
+    --primary-dark: #292922;
+    --primary-rgb: 41, 41, 34;
+    --secondary-medium: #3E3B31;
+    --secondary-rgb: 62, 59, 49;
+    --accent-gold: #C9B050;
+    --accent-rgb: 201, 176, 80;
+    --accent-hover: #B8A045;
+    --accent-green: #C9B050;
+    --neutral-light: #EAEAC4;
+    --neutral-dark: #1F1F14;
+    --neutral-dark-rgb: 31, 31, 20;
+    --text-primary: #EAEAC4;
+    --text-dark: #1F1F14;
+}
+
+:root[data-theme="tierra"] .header {
+    border-bottom-color: var(--accent-green);
+}
+
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: var(--secondary-medium);
+    border: 1px solid var(--accent-gold);
+    border-radius: 20px;
+    padding: 2px;
+    gap: 0;
+    flex-shrink: 0;
+}
+
+.theme-switcher-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--neutral-light);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.7rem;
+    border-radius: 16px;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.theme-switcher-btn[aria-pressed="true"] {
+    background: var(--accent-gold);
+    color: var(--neutral-dark);
+}
+
+.theme-switcher-btn:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    .theme-switcher-btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.55rem;
+    }
+}
+
+.theme-switcher-item {
+    display: none;
+    list-style: none;
+}
+
+@media (max-width: 768px) {
+    .header-actions > .theme-switcher {
+        display: none;
+    }
+
+    .theme-switcher-item {
+        display: block;
+        padding: 0.5rem 0 0.25rem;
+    }
+
+    .nav-menu .theme-switcher {
+        width: fit-content;
+    }
+}

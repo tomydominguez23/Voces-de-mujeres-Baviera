@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(){try{var t=localStorage.getItem('vb-color-theme');document.documentElement.setAttribute('data-theme',(t==='original'?'original':'tierra'));}catch(e){document.documentElement.setAttribute('data-theme','tierra');}})();</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos - Voces de Mujeres Unidas</title>
@@ -58,7 +60,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(41, 41, 34, 0.95);
+            background: rgba(var(--primary-rgb), 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -154,7 +156,7 @@
 
         .language-dropdown:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(201, 176, 80, 0.3);
+            box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.3);
         }
 
         .language-dropdown option {
@@ -177,7 +179,7 @@
         }
 
         .btn-donate:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             color: var(--neutral-dark);
             transform: translateY(-2px);
         }
@@ -318,7 +320,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(201, 176, 80, 0.8);
+            background: rgba(var(--accent-rgb), 0.8);
             color: var(--neutral-dark);
             border: none;
             border-radius: 50%;
@@ -364,7 +366,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(201, 176, 80, 0.5);
+            background: rgba(var(--accent-rgb), 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -423,7 +425,7 @@
         }
 
         .project-details {
-            background: rgba(201, 176, 80, 0.1);
+            background: rgba(var(--accent-rgb), 0.1);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1.5rem;
@@ -455,7 +457,7 @@
         .metric-item {
             text-align: center;
             padding: 1rem;
-            background: rgba(201, 176, 80, 0.1);
+            background: rgba(var(--accent-rgb), 0.1);
             border-radius: 10px;
         }
 
@@ -496,7 +498,7 @@
         }
 
         .btn-donate-project:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             color: var(--neutral-dark);
             transform: translateY(-2px);
         }
@@ -642,7 +644,7 @@
         }
 
         .gallery-btn:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             transform: scale(1.1);
         }
 
@@ -655,7 +657,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(201, 176, 80, 0.3);
+            background: rgba(var(--accent-rgb), 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -684,7 +686,7 @@
         }
 
         .gallery-more-link:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             color: var(--neutral-dark);
             transform: translateY(-2px);
         }
@@ -731,7 +733,7 @@
 
         .event-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(201, 176, 80, 0.3);
+            box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.3);
         }
 
         .event-image {
@@ -834,7 +836,7 @@
         }
 
         .carousel-btn:hover {
-            background: #B8A045;
+            background: var(--accent-hover);
             transform: scale(1.1);
         }
 
@@ -847,7 +849,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(201, 176, 80, 0.3);
+            background: rgba(var(--accent-rgb), 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -926,7 +928,7 @@
                 top: 64px;
                 left: 0;
                 width: 100%;
-                background: rgba(41,41,34,.98);
+                background: rgba(var(--primary-rgb), .98);
                 border-bottom: 1px solid var(--secondary-medium);
                 padding: .5rem .75rem;
                 flex-direction: column;
@@ -1051,6 +1053,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
     </style>
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 
 <body>
@@ -1078,6 +1081,10 @@
                         <option value="en">🇺🇸 EN</option>
                         <option value="de">🇩🇪 DE</option>
                     </select>
+                </div>
+                <div class="theme-switcher" role="group" aria-label="Paleta de colores">
+                    <button type="button" class="theme-switcher-btn" data-theme-value="tierra">Tierra</button>
+                    <button type="button" class="theme-switcher-btn" data-theme-value="original">Original</button>
                 </div>
                 <a href="#donar" class="btn-donate" id="btn-donar-header" onclick="event.preventDefault(); window.open('https://www.paypal.com/donate/?hosted_button_id=QHFGQRJQQG8YU','_blank','noopener');">Donar</a>
             </div>
@@ -1443,7 +1450,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(41, 41, 34, 0.98);
+            background: rgba(var(--primary-rgb), 0.98);
             border-top: 1px solid var(--accent-gold);
             padding: 0.6rem 1rem;
             z-index: 2000;
@@ -1673,5 +1680,6 @@
             console.log('✅ Proyectos inicializados con carrusel de galería: 9 segundos');
         });
     </script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
